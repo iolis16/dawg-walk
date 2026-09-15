@@ -70,19 +70,25 @@ namespace DawgWalk.CampusBuilders
                 pinnacle.Refresh();
             }
 
-            // Corner tower spires (replace flat caps with tapering cones)
-            Vector3[] towerTops =
+            // Corner towers (shaft + tapering spire cap)
+            (float x, float z)[] towerXZ = { (-36f, 86f), (36f, 86f), (-36f, 64f), (36f, 64f) };
+            const float towerBaseY = 25f;
+            const float towerHeight = 10f;
+
+            foreach (var (x, z) in towerXZ)
             {
-                new Vector3(-36f, 35f, 86f), new Vector3(36f, 35f, 86f),
-                new Vector3(-36f, 35f, 64f), new Vector3(36f, 35f, 64f),
-            };
-            foreach (var top in towerTops)
-            {
+                var shaft = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                shaft.name = "Suzzallo_Tower";
+                shaft.transform.SetParent(group.transform);
+                shaft.transform.position = new Vector3(x, towerBaseY + towerHeight * 0.5f, z);
+                shaft.transform.localScale = new Vector3(4f, towerHeight, 4f);
+                shaft.GetComponent<MeshRenderer>().sharedMaterial = stone;
+
                 var spire = ShapeGenerator.GenerateCone(PivotLocation.Center, 2f, 6f, 8);
                 spire.gameObject.name = "Suzzallo_TowerSpire";
                 spire.GetComponent<MeshRenderer>().sharedMaterial = roof;
                 spire.transform.SetParent(group.transform);
-                spire.transform.position = top + new Vector3(0f, 3f, 0f);
+                spire.transform.position = new Vector3(x, towerBaseY + towerHeight + 3f, z);
                 spire.ToMesh();
                 spire.Refresh();
             }
