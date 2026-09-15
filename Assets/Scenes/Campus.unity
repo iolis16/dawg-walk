@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 104391323}
   - component: {fileID: 104391322}
   - component: {fileID: 104391321}
+  - component: {fileID: 104391327}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -181,7 +182,7 @@ MonoBehaviour:
         DecelTime: 0.2
     - Name: Orbit Scale
       Owner: {fileID: 104391324}
-      Enabled: 1
+      Enabled: 0
       Input:
         InputAction: {fileID: 5082991133974614888, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
         Gain: -1
@@ -292,7 +293,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   RadialAxis:
-    Value: 2
+    Value: 6
     Center: 2
     Range: {x: 2, y: 150}
     Wrap: 0
@@ -353,12 +354,27 @@ Transform:
   m_GameObject: {fileID: 104391320}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212339, y: 0.000000028235123, z: -0.0000000043458006, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 4.60847, z: -41.444603}
+  m_LocalPosition: {x: 0, y: 11.82541, z: -64.33381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104391327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104391320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa4d6693130743188e5fb5f542ce2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DawgWalk.CameraZoomController
+  zoomSensitivity: 0.05
+  minValue: 2
+  maxValue: 150
 --- !u!1 &149945708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1417,7 @@ Transform:
   m_GameObject: {fileID: 1931069526}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212339, y: 0.000000028235123, z: -0.000000004345801, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 4.60847, z: -41.444603}
+  m_LocalPosition: {x: 0, y: 11.82541, z: -64.33381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
